@@ -1,0 +1,97 @@
+<h1>温泉サイト</h1>
+<%= button_to 'ログアウト', destroy_user_session_path, method: :delete %> 
+
+<%= link_to "ログイン", onsens_path %>
+<%= link_to "新規登録", new_user_registration_path %>
+
+<h3>温泉施設一覧</h3>
+<%= link_to "新規投稿へ", new_onsen_path %>
+<div class="onsens-container">
+  <% @onsens.each do |t| %>
+    <div class="onsen">
+      <div>
+      施設名:
+      <%= t.onsen_name %>
+    </div>
+
+    <div>
+      住所:
+      <%= t.onsen_adress%>
+      </div>
+      
+      <div>
+      TEL:
+      <%= t.onsen_tel %>
+      </div>
+
+      <div>
+      営業時間:
+      <%= t.onsen_time %>
+      </div>
+
+      <div>
+      定休日:
+      <%= t.onsen_day %>
+      </div>
+
+      <div>
+      公式HP:
+      <%= t.onsen_hp%>
+      </div>
+
+      <div>
+      料金:
+      <%= t.price %>
+      </div>
+
+      <div>
+      設備:
+      <%= t.spa_data %>
+      </div>
+
+      <div>
+      アメニティ:
+      <%= t.equipment %>
+      </div>
+
+      <div>
+      特徴:
+      <%= t.features %>
+      </div>
+
+      <div>
+      口コミ:
+      <%= t.reviews %>
+      </div>
+
+<%= render 'onsens/tag_list', tag_list: t.tag_list %>
+
+    <div>
+<h2>総合評価：
+<span class="star-rating">
+   <span class="star-rating-front" style="width: <%= getPercent(t.overall) %>%;">★★★★★</span>
+   <span class="star-rating-back">★★★★★</span>
+</span> 
+</h2>
+</div>
+
+<div>
+<h2>温泉の効能レベル：
+<span class="star-rating">
+   <span class="star-rating-front" style="width: <%= getPercent(t.level) %>%;">★★★★★</span>
+   <span class="star-rating-back">★★★★★</span>
+</span>
+</h2>
+</div>
+
+<div>
+        投稿日時:
+      <%= t.created_at %>
+      </div>
+    </div>
+
+<%= link_to "投稿詳細へ", onsen_path(t.id) %> 
+<%= link_to "編集する", edit_onsen_path(t.id) %>
+<%= button_to "削除する", onsen_path(t.id), method: :delete %>
+  <% end %>
+</div>

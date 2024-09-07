@@ -1,0 +1,110 @@
+<h1>温泉サイト</h1>
+<h3>新規温泉施設</h3>
+<%= form_for @onsen do |f| %>
+
+<div class="field">
+    <%= f.label :"施設名" %>
+    <%= f.text_field :onsen_name, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"住所" %>
+    <%= f.text_field :onsen_adress, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tel, :"TEL" %>
+    <%= f.text_field :onsen_tel, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"営業時間" %>
+    <%= f.text_field :onsen_time, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"定休日" %>
+    <%= f.text_field :onsen_day, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hp, :"公式HP" %>
+    <%= f.text_field :onsen_hp, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"料金" %>
+    <%= f.text_field :price, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"設備"  %>
+    <%= f.select :spa_data, 
+    [["露天風呂", "露天風呂"], 
+    ["岩盤浴", "岩盤浴"], 
+    ["サウナ", "サウナ"]], include_blank: "選択して下さい" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"アメニティ"  %>
+    <%= f.select :equipment, 
+    [["シャンプー等", "シャンプー等"], 
+    ["休憩所", "休憩所"], 
+    ["食事", "食事"]], include_blank: "選択して下さい" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"特徴" %>
+    <%= f.text_field :features, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"口コミ" %>
+    <%= f.text_area :reviews, :size => "30x2" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :タグ %>
+    <%= f.text_field :tag_list, value: @onsen.tag_list %>
+　　</div>
+
+<h5>総合評価</h5>
+   <div class="post_form">
+    <%= f.radio_button :overall, 5 ,id: 'star1'%>
+    <label for="star1"><span class="text">最高</span>★</label>
+
+    <%= f.radio_button :overall, 4 ,id: 'star2'%>
+    <label for="star2"><span class="text">良い</span>★</label>
+
+    <%= f.radio_button :overall, 3 ,id: 'star3'%>
+    <label for="star3"><span class="text">普通</span>★</label>
+
+    <%= f.radio_button :overall, 2 ,id: 'star4'%>
+    <label for="star4"><span class="text">悪い</span>★</label>
+
+    <%= f.radio_button :overall, 1 ,id: 'star5'%>
+    <label for="star5"><span class="text">最悪</span>★</label>
+ </div>
+
+<h5>温泉の効能レベル</h5>
+  <div class="post_form">
+    <%= f.radio_button :level,  5 ,id: 'star6'%>
+    <label for="star6"><span class="text">難しい</span>★</label>
+
+    <%= f.radio_button :level,  4 ,id: 'star7'%>
+    <label for="star7"><span class="text">やや難しい</span>★</label>
+
+    <%= f.radio_button :level, 3 ,id: 'star8'%>
+    <label for="star8"><span class="text">普通</span>★</label>
+
+    <%= f.radio_button :level , 2 ,id: 'star9'%>
+    <label for="star9"><span class="text">やや簡単</span>★</label>
+
+    <%= f.radio_button :level , 1 ,id: 'star10'%>
+    <label for="star10"><span class="text">簡単</span>★</label>
+ </div>
+
+  <%= f.submit "投稿する" %>
+<% end %>
+
+<%= link_to "一覧に戻る", onsens_path %>

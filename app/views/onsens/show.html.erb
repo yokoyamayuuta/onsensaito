@@ -1,0 +1,91 @@
+<h1>温泉サイト</h1>
+<h3>温泉投稿詳細</h3>
+<div class="onsen">
+  <p>
+    <div>
+      施設名:
+      <%= @onsen.onsen_name %>
+    </div>
+
+    <div>
+      住所:
+      <%= @onsen.onsen_adress%>
+      </div>
+      
+      <div>
+      TEL:
+      <%= @onsen.onsen_tel %>
+      </div>
+
+      <div>
+      営業時間:
+      <%= @onsen.onsen_time %>
+      </div>
+
+      <div>
+      定休日:
+      <%= @onsen.onsen_day %>
+      </div>
+
+      <div>
+      公式HP:
+      <%= @onsen.onsen_hp%>
+      </div>
+
+      <div>
+      料金:
+      <%= @onsen.price %>
+      </div>
+
+      <div>
+      設備:
+      <%= @onsen.spa_data %>
+      </div>
+
+      <div>
+      アメニティ:
+      <%= @onsen.equipment %>
+      </div>
+
+      <div>
+      特徴:
+      <%= @onsen.features %>
+      </div>
+
+      <div>
+      口コミ:
+      <%= @onsen.reviews %>
+      </div>
+
+<%= render 'onsens/tag_list', tag_list: @onsen.tag_list %>
+    </p>
+
+    <div>
+<h2>総合評価：
+<span class="star-rating">
+   <span class="star-rating-front" style="width: <%= getPercent(@onsen.overall) %>%;">★★★★★</span>
+   <span class="star-rating-back">★★★★★</span>
+</span> 
+</h2>
+</div>
+
+<div>
+<h2>温泉の効能レベル：
+<span class="star-rating">
+   <span class="star-rating-front" style="width: <%= getPercent(@onsen.level) %>%;">★★★★★</span>
+   <span class="star-rating-back">★★★★★</span>
+</span>
+</h2>
+</div>
+
+<p>
+    <div>
+        投稿日時:
+    <%= @onsen.created_at %>
+    </div>
+    </p>
+
+</div>
+
+<%= link_to "編集する", edit_onsen_path(@onsen.id) %>
+<%= link_to "投稿一覧に戻る", onsens_path %>
